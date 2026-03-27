@@ -1,0 +1,92 @@
+/* --- Analysis Results refined --- */
+.results-container {
+    display: grid;
+    grid-template-columns: 1fr 380px; /* Precise width for sidebar */
+    gap: 2rem;
+    height: calc(100vh - 150px);
+}
+
+.analysis-viewer {
+    background: #000;
+    border-radius: 20px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #1E293B;
+}
+
+/* Image Wrapper for Perfect Alignment */
+.mri-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, #1e293b 0%, #000 100%);
+}
+
+.main-scan {
+    max-height: 85%;
+    max-width: 90%;
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+/* ROI Box - Fix for Safari */
+.roi-box {
+    position: absolute;
+    top: 40%; /* Adjust these to match the brain in your image */
+    left: 48%;
+    width: 130px;
+    height: 130px;
+    border: 2px solid #EF4444;
+    background: rgba(239, 68, 68, 0.1);
+    pointer-events: none;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.roi-label {
+    position: absolute;
+    top: -24px;
+    background: #EF4444;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 2px 2px 0 0;
+}
+
+/* Floating Controls Overlay */
+.viewer-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.control-btn:hover { background: rgba(255,255,255,0.1); }
+.control-btn.active { background: #2563EB; }
