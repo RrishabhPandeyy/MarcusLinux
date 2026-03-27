@@ -1,0 +1,81 @@
+/* --- Patient Records Table Styling --- */
+
+.table-container {
+    padding: 0;
+    overflow: hidden;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #E2E8F0;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.records-table thead {
+    background: #F8FAFC;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.records-table th {
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748B;
+    font-weight: 700;
+}
+
+.records-table td {
+    padding: 1.2rem 1.5rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #F1F5F9;
+    color: #1E293B;
+}
+
+.records-table tr:hover {
+    background-color: #FBFDFF;
+}
+
+/* Status Badges */
+.badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.badge-malignant { background: #FEF2F2; color: #EF4444; }
+.badge-benign { background: #F0FDF4; color: #22C55E; }
+.badge-pending { background: #FFFBEB; color: #D97706; }
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    width: 320px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.view-btn {
+    color: var(--clinical-blue);
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.view-btn:hover { text-decoration: underline; }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Solutions | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Methodology</a></li>
+            <li><a href="solutions.html" style="color:var(--clinical-blue)">Solutions</a></li>
+            <li><a href="compliance.html">Compliance</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="auth.html" class="btn-cta">Clinician Login</a>
+        </div>
+    </nav>
+
+    <main style="padding: 160px 10% 80px;">
+        <header style="margin-bottom: 5rem; text-align: center;">
+            <h1 style="font-size: 3rem; letter-spacing: -1px; margin-bottom: 1rem;">Enterprise Radiology Solutions</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+                Empowering institutions with high-fidelity tumor detection and longitudinal volumetric analysis.
+            </p>
+        </header>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 6rem;">
+            <div class="card" style="padding: 2.5rem; border-top: 4px solid var(--clinical-blue);">
+                <div style="width: 45px; height: 45px; background: #eff6ff; color: var(--clinical-blue); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i data-lucide="upload-cloud"></i>
+                </div>
+                <h3 style="margin-bottom: 1rem;">Seamless Ingestion</h3>
+                <p style="font-size: 0.9rem; color: #64748B; line-height: 1.7;">Direct DICOM bridging from local PACS servers to our neural cloud for instant analysis.</p>
+            </div>
+
+            <div class="card" style="padding: 2.5rem; border-top: 4px solid #8b5cf6;">
+                <div style="width: 45px; height: 45px; background: #f5f3ff; color: #8b5cf6; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i data-lucide="brain"></i>
+                </div>
+                <h3 style="margin-bottom: 1rem;">Neural Processing</h3>
+                <p style="font-size: 0.9rem; color: #64748B; line-height: 1.7;">Autonomous tissue classification using D-CNN architecture with 98.2% clinical sensitivity.</p>
+            </div>
+
+            <div class="card" style="padding: 2.5rem; border-top: 4px solid #10b981;">
+                <div style="width: 45px; height: 45px; background: #ecfdf5; color: #10b981; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i data-lucide="file-check"></i>
+                </div>
+                <h3 style="margin-bottom: 1rem;">Automated Reports</h3>
+                <p style="font-size: 0.9rem; color: #64748B; line-height: 1.7;">Standardized reporting with exact coordinates, volume estimates, and malignancy probability.</p>
+            </div>
+        </div>
+
+        <section style="background: #f8fafc; border-radius: 24px; padding: 4rem; border: 1px solid #e2e8f0;">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Institution Impact Analysis</h2>
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #e2e8f0;">
+                        <th style="padding: 1.5rem; color: #64748B;">Clinical Feature</th>
+                        <th style="padding: 1.5rem; color: #64748B;">Traditional Pipeline</th>
+                        <th style="padding: 1.5rem; color: var(--clinical-blue);">NeuroScanAI Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #e2e8f0;">
+                        <td style="padding: 1.5rem; font-weight: 600;">Detection Latency</td>
+                        <td style="padding: 1.5rem;">45 - 60 Minutes</td>
+                        <td style="padding: 1.5rem; color: var(--clinical-blue); font-weight: 700;">&lt; 12 Seconds</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e2e8f0;">
+                        <td style="padding: 1.5rem; font-weight: 600;">Volumetric Accuracy</td>
+                        <td style="padding: 1.5rem;">Manual Estimation</td>
+                        <td style="padding: 1.5rem; color: var(--clinical-blue); font-weight: 700;">Sub-millimeter Voxel Precision</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1.5rem; font-weight: 600;">Data Integration</td>
+                        <td style="padding: 1.5rem;">Siloed Records</td>
+                        <td style="padding: 1.5rem; color: var(--clinical-blue); font-weight: 700;">Full PACS & EMR Sync</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

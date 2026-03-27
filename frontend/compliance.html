@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulatory Compliance | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+    <aside class="sidebar">
+        <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+        <nav class="side-nav">
+            <a href="dashboard.html" class="nav-item"><i data-lucide="layout-dashboard"></i> Diagnostic Console</a>
+            <a href="records.html" class="nav-item"><i data-lucide="clipboard-list"></i> Patient Records</a>
+            <a href="docs.html" class="nav-item"><i data-lucide="file-text"></i> Documentation</a>
+            <a href="compliance.html" class="nav-item active"><i data-lucide="shield-check"></i> Compliance</a>
+        </nav>
+        
+        <div class="sidebar-footer" id="sidebar-footer-container">
+            </div>
+    </aside>
+
+    <main class="workspace">
+        <header class="workspace-header">
+            <div>
+                <h1 style="font-size: 1.5rem; font-weight: 800;">Regulatory Compliance</h1>
+                <p style="font-size: 0.85rem; color: #64748B;">Standardized frameworks for medical data integrity</p>
+            </div>
+        </header>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            
+            <div class="card" style="padding: 2rem; border-top: 4px solid #2563EB;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                    <i data-lucide="lock" style="color: #2563EB;"></i>
+                    <h3 style="font-size: 1.1rem;">HIPAA Privacy Rule</h3>
+                </div>
+                <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6;">
+                    All Patient Health Information (PHI) is encrypted at rest using AES-256. Our "Zero-Knowledge" architecture ensures that raw MRI data is never stored on persistent storage without explicit clinician authorization.
+                </p>
+            </div>
+
+            <div class="card" style="padding: 2rem; border-top: 4px solid #22C55E;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                    <i data-lucide="check-circle" style="color: #22C55E;"></i>
+                    <h3 style="font-size: 1.1rem;">ISO 27001 Certified</h3>
+                </div>
+                <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6;">
+                    NeuroScanAI operates under the Information Security Management System (ISMS) framework, ensuring rigorous risk assessment and systematic management of sensitive institutional data.
+                </p>
+            </div>
+
+            <div class="card" style="padding: 2rem; border-top: 4px solid #F59E0B;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                    <i data-lucide="brain-circuit" style="color: #F59E0B;"></i>
+                    <h3 style="font-size: 1.1rem;">Ethical AI Framework</h3>
+                </div>
+                <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6;">
+                    Our Neural Engine is audited for "Bias Mitigation." We ensure clinical results are based strictly on voxel density and morphological patterns, independent of patient demographic markers.
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem; padding: 1.5rem; background: #F8FAFC; border: 1px dashed #CBD5E1;">
+            <h4 style="font-size: 0.8rem; text-transform: uppercase; color: #64748B; margin-bottom: 10px;">Institutional Audit Log</h4>
+            <div style="font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: #94A3B8;">
+                [2026-03-28 14:10:02] Session initialized by UID: <span id="log-uid">...</span><br>
+                [2026-03-28 14:12:45] Integrity Check: PASSED<br>
+                [2026-03-28 14:15:30] PHI Access Request: GRANTED
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userData = JSON.parse(localStorage.getItem('neuroUser'));
+            const footer = document.getElementById('sidebar-footer-container');
+            const logUid = document.getElementById('log-uid');
+
+            if (userData) {
+                // Set the Audit Log UID
+                logUid.innerText = userData.email;
+
+                // Inject Sidebar Profile
+                const initials = userData.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                footer.innerHTML = `
+                    <div class="user-profile" style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding: 0 10px;">
+                        <div class="avatar" style="width: 40px; height: 40px; background: #2563EB; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">${initials}</div>
+                        <div class="user-info">
+                            <p style="font-weight: 700; font-size: 0.85rem; color: #1E293B; margin: 0;">${userData.name}</p>
+                            <span style="font-size: 0.75rem; color: #64748B;">Neuro-Radiologist</span>
+                        </div>
+                    </div>
+                    <button onclick="logout()" class="logout-btn"><i data-lucide="log-out" style="width:14px"></i> Terminate Session</button>
+                `;
+            }
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

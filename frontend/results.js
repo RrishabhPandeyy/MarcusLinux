@@ -1,26 +1,21 @@
-// Security Gatekeeper
+/**
+ * NeuroScanAI | Diagnostic Report Logic
+ */
+
+// 1. Initial Checks
 checkAuth();
 lucide.createIcons();
 
-// Set Current Date
-document.getElementById('report-date').innerText = new Date().toLocaleDateString('en-US', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-});
-
-// Toggle ROI Overlay
-function toggleROI() {
-    const roi = document.getElementById('tumor-roi');
-    const btn = document.querySelector('.control-btn');
-    
-    if (roi.style.opacity === '0') {
-        roi.style.opacity = '1';
-        btn.classList.add('active');
-    } else {
-        roi.style.opacity = '0';
-        btn.classList.remove('active');
-    }
+// 2. Report Timestamp
+const reportDateEl = document.getElementById('report-date');
+if (reportDateEl) {
+    const now = new Date();
+    reportDateEl.innerText = now.toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    }) + " | 14:22:08 UTC";
 }
 
+// 3. Toggle ROI Overlay
 function toggleROI() {
     const roi = document.getElementById('tumor-roi');
     const btn = document.getElementById('toggleBtn');
@@ -32,4 +27,10 @@ function toggleROI() {
         roi.style.display = 'none';
         btn.classList.remove('active');
     }
+}
+
+// 4. Session Termination
+function logout() {
+    localStorage.removeItem('neuroAuth');
+    window.location.href = 'auth.html';
 }

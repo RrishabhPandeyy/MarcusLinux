@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal & Data Governance | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .legal-section { padding: 80px 0; border-bottom: 1px solid #E2E8F0; }
+        .legal-section:last-child { border-bottom: none; }
+        .clause-box { padding: 2rem; background: #F8FAFC; border-radius: 12px; border-left: 4px solid #CBD5E1; margin-top: 1.5rem; }
+        .legal-text { line-height: 1.8; color: #475569; font-size: 0.95rem; }
+        h3 { color: #1E293B; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Methodology</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="legal.html" style="color:var(--clinical-blue)">Legal</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="auth.html" class="btn-cta">Clinician Login</a>
+        </div>
+    </nav>
+
+    <main style="padding: 140px 10% 80px;">
+        
+        <header style="text-align: center; margin-bottom: 4rem;">
+            <h1 style="font-size: 2.8rem; letter-spacing: -1px;">Institutional Governance</h1>
+            <p style="color: #64748B;">Legal frameworks and regulatory disclosures for clinical deployment.</p>
+        </header>
+
+        <section id="privacy-policy" class="legal-section">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                <i data-lucide="lock" style="color: var(--clinical-blue);"></i>
+                <h2 style="font-size: 1.8rem;">Privacy Policy</h2>
+            </div>
+            <p class="legal-text">Effective Date: March 28, 2026</p>
+            
+            <div class="clause-box">
+                <h3>Data Minimization & PHI</h3>
+                <p class="legal-text">NeuroScanAI adheres to strict HIPAA guidelines. We do not permanently store raw DICOM pixel data once the Neural Engine has completed its inference. Only derived metadata and volumetric clinical findings are retained for the patient record lifecycle.</p>
+            </div>
+        </section>
+
+        <section id="terms-of-service" class="legal-section">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                <i data-lucide="scale" style="color: var(--clinical-blue);"></i>
+                <h2 style="font-size: 1.8rem;">Terms of Service</h2>
+            </div>
+            
+            <div class="clause-box">
+                <h3>Clinician Responsibility</h3>
+                <p class="legal-text">The NeuroScanAI platform is a <strong>Clinical Decision Support (CDS)</strong> tool. It is not intended for autonomous diagnosis. Final diagnostic confirmation remains the sole responsibility of the licensed radiologist or attending physician.</p>
+            </div>
+        </section>
+
+        <section id="fda-disclosures" class="legal-section">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                <i data-lucide="award" style="color: #E11D48;"></i>
+                <h2 style="font-size: 1.8rem;">FDA Disclosures</h2>
+            </div>
+
+            <div class="clause-box" style="border-left-color: #E11D48;">
+                <h3>Class II Software-as-a-Medical-Device (SaMD)</h3>
+                <p class="legal-text">NeuroScanAI has received 510(k) clearance for the analysis of cerebral glioma masses in adult patients. Use in pediatric populations or for spinal cord analysis is currently under investigational review.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
