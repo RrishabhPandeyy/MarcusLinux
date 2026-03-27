@@ -1,0 +1,174 @@
+/* --- 1. GLOBAL RESET (The "Nuclear" Option) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Force-kill all default link styles globally */
+a, a:visited, a:hover, a:active, a:link {
+    text-decoration: none !important;
+    color: inherit !important;
+    outline: none !important;
+    -webkit-text-decoration: none !important;
+}
+
+:root {
+    --primary: #FFFFFF;
+    --clinical-blue: #2564ebe8;
+    --navy: #0F172A;
+    --soft-slate: #F8FAFC;
+    --border: #E2E8F0;
+    --text-muted: #64748B;
+}
+
+body {
+    background-color: var(--primary);
+    color: var(--navy);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+/* --- 2. NAVIGATION BAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 8%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand { 
+    font-size: 1.5rem; 
+    font-weight: 800; 
+    color: var(--clinical-blue); 
+    letter-spacing: -0.5px; 
+}
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { font-weight: 500; font-size: 0.9rem; transition: 0.2s; }
+.nav-links a:hover { color: var(--clinical-blue) !important; }
+
+/* --- 3. BUTTON SYSTEM --- */
+.btn-cta {
+    background-color: var(--clinical-blue) !important;
+    color: #FFFFFF !important;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.btn-secondary {
+    background-color: #FFFFFF !important;
+    color: var(--navy) !important;
+    border: 1px solid var(--border) !important;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-flex;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--soft-slate) !important;
+    border-color: #CBD5E1 !important;
+}
+
+/* --- 4. FOOTER --- */
+.footer {
+    background: var(--soft-slate);
+    border-top: 1px solid var(--border);
+    padding: 5rem 8% 3rem;
+}
+
+/* --- FOOTER SECTION STYLES --- */
+.footer {
+    background: #F8FAFC; /* Soft Slate */
+    border-top: 1px solid #E2E8F0;
+    padding: 6rem 10% 3rem;
+    margin-top: 8rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Main brand col is wider */
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer-col h4 {
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #64748B;
+    font-weight: 700;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col li {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: #64748B;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.footer-col li:hover {
+    color: #2563EB; /* Clinical Blue hover */
+}
+
+/* Bottom Bar & Badges */
+.footer-bottom {
+    border-top: 1px solid #E2E8F0;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.hipaa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #475569;
+    background: white;
+    text-transform: uppercase;
+}
+
+.hipaa-badge i {
+    color: #2564ebe8; /* Icon color */
+    
+}
