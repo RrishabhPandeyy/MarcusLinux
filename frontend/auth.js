@@ -67,9 +67,9 @@ if (signupForm) {
         console.log("Credentials Cached for:", email);
         alert('Institutional Access Granted. Redirecting to Terminal...');
         
-        // Switch to Login Mode
-        toggleAuth('login');
-        return false;
+        // Success: Auto-Authorize the session
+        localStorage.setItem('neuroAuth', 'true');
+        window.location.href = 'dashboard.html';
     });
 }
 
@@ -110,3 +110,5 @@ function logout() {
     localStorage.removeItem('neuroAuth');
     window.location.href = 'auth.html';
 }
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neural Architecture | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html" style="color:var(--clinical-blue)">Methodology</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="compliance.html">Compliance</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="auth.html" class="btn-cta">Clinician Login</a>
+        </div>
+    </nav>
+
+    <main style="padding: 160px 10% 80px;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <header style="text-align: center; margin-bottom: 5rem;">
+                <h1 style="font-size: 2.8rem; letter-spacing: -1px;">Technical Methodology</h1>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 1rem;">
+                    Deciphering the neural pathways of our malignant detection engine.
+                </p>
+            </header>
+
+            <div style="display: flex; gap: 4rem; align-items: center; margin-bottom: 6rem;">
+                <div style="flex: 1;">
+                    <h3 style="color: var(--clinical-blue); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem;">Core Architecture</h3>
+                    <h2 style="margin-bottom: 1.5rem;">D-CNN Residual Blocks</h2>
+                    <p style="color: #64748B; line-height: 1.8;">
+                        Our engine utilizes a Deep Residual Convolutional Neural Network. Unlike standard CNNs, our residual blocks allow the model to learn identity mappings, preventing the "vanishing gradient" problem during deep MRI slice training.
+                    </p>
+                </div>
+                <div class="card" style="flex: 1; padding: 2rem; background: #0F172A; color: white;">
+                    <div style="font-family: 'Geist Mono', monospace; font-size: 0.75rem; opacity: 0.8;">
+                        <span style="color: #38BDF8;">layer_1</span>: Conv3D(32, (3,3,3))<br>
+                        <span style="color: #38BDF8;">layer_2</span>: BatchNormalization()<br>
+                        <span style="color: #38BDF8;">layer_3</span>: ReLU()<br>
+                        <span style="color: #F472B6;">// Residual Connection</span><br>
+                        <span style="color: #38BDF8;">layer_4</span>: Add([l3, l1])
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                <div class="card" style="text-align: center; padding: 2rem;">
+                    <h2 style="color: var(--clinical-blue); font-size: 2.5rem;">50k+</h2>
+                    <p style="font-size: 0.8rem; font-weight: 700;">Training Sequences</p>
+                </div>
+                <div class="card" style="text-align: center; padding: 2rem;">
+                    <h2 style="color: var(--clinical-blue); font-size: 2.5rem;">0.02mm</h2>
+                    <p style="font-size: 0.8rem; font-weight: 700;">Voxel Precision</p>
+                </div>
+                <div class="card" style="text-align: center; padding: 2rem;">
+                    <h2 style="color: var(--clinical-blue); font-size: 2.5rem;">98.2%</h2>
+                    <p style="font-size: 0.8rem; font-weight: 700;">AUC-ROC Score</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

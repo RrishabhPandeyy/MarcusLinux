@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institutional Support | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+        
+        /* Support Card Styling */
+        .support-card { 
+            padding: 2rem; 
+            border-radius: 16px; 
+            background: white; 
+            border: 1px solid #E2E8F0; 
+            transition: all 0.3s ease; 
+        }
+        
+        .support-card:hover { 
+            border-color: var(--clinical-blue); 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.05);
+        }
+
+        /* Uptime Badge */
+        .status-badge { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: #F0FDF4; 
+            color: #16A34A; 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            width: fit-content; 
+            margin: 0 auto 2.5rem; 
+            border: 1px solid #DCFCE7;
+        }
+
+        .pulse-dot {
+            width: 8px; 
+            height: 8px; 
+            background: #22C55E; 
+            border-radius: 50%; 
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Methodology</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="support.html" style="color:var(--clinical-blue)">Support</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="auth.html" class="btn-cta">Clinician Login</a>
+        </div>
+    </nav>
+
+    <main style="padding: 140px 10% 80px;">
+        
+        <header style="text-align: center; margin-bottom: 5rem;">
+            <div class="status-badge">
+                <span class="pulse-dot"></span>
+                Systems Operational: Neural Engine Online
+            </div>
+            <h1 style="font-size: 3rem; letter-spacing: -1px; margin-bottom: 1rem;">Institutional Support</h1>
+            <p style="color: #64748B; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                Technical assistance and clinical resources for NeuroScanAI healthcare partners.
+            </p>
+        </header>
+
+        <section id="help-center" style="margin-bottom: 6rem;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2.5rem;">
+                <i data-lucide="book-open" style="color: var(--clinical-blue); width: 24px;"></i>
+                <h2 style="font-size: 1.8rem; font-weight: 800;">Clinical Resource Center</h2>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                <div class="support-card">
+                    <h4 style="margin-bottom: 12px; color: #1E293B;">Interpreting AI Metrics</h4>
+                    <p style="font-size: 0.85rem; color: #64748B; line-height: 1.7;">
+                        Guidelines on correlating Malignancy Probability scores with standard clinical BI-RADS or PI-RADS diagnostic classifications.
+                    </p>
+                </div>
+
+                <div class="support-card">
+                    <h4 style="margin-bottom: 12px; color: #1E293B;">Imaging Lifecycle</h4>
+                    <p style="font-size: 0.85rem; color: #64748B; line-height: 1.7;">
+                        Protocols for data retention and archival timelines for MRI sequences processed through the cloud-neural infrastructure.
+                    </p>
+                </div>
+
+                <div class="support-card">
+                    <h4 style="margin-bottom: 12px; color: #1E293B;">Growth Tracking</h4>
+                    <p style="font-size: 0.85rem; color: #64748B; line-height: 1.7;">
+                        Step-by-step instructions for utilizing longitudinal data to calculate precise tumor progression and volumetric expansion rates.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-security">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2.5rem;">
+                <i data-lucide="shield-alert" style="color: #E11D48; width: 24px;"></i>
+                <h2 style="font-size: 1.8rem; font-weight: 800;">Security & Data Integrity</h2>
+            </div>
+
+            <div class="card" style="padding: 3.5rem; background: #FFF1F2; border: 1px solid #FECDD3; display: flex; align-items: center; gap: 4rem; border-radius: 24px;">
+                <div style="flex: 2;">
+                    <h3 style="color: #991B1B; margin-bottom: 1.2rem; font-size: 1.6rem;">Report a Security Incident</h3>
+                    <p style="font-size: 1rem; color: #991B1B; line-height: 1.8; opacity: 0.9;">
+                        If you have identified a vulnerability or suspect unauthorized access to Patient Health Information (PHI), our 24/7 Incident Response Team is available for immediate coordination.
+                    </p>
+                </div>
+                <div style="flex: 1; text-align: center;">
+                    <button class="btn-cta" style="background: #E11D48 !important; padding: 18px 32px; font-weight: 700; width: 100%; border-radius: 12px;">
+                        Emergency Security Desk
+                    </button>
+                    <p style="font-size: 0.75rem; color: #BE123C; font-weight: 600; margin-top: 15px;">
+                        <i data-lucide="clock" style="width: 12px; vertical-align: middle;"></i> Response Time: &lt; 15 mins
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -10,30 +10,51 @@
 
 /* Imaging Viewer Container */
 .analysis-viewer {
-    background: #000;
-    border-radius: 16px;
-    position: relative;
     display: flex;
     flex-direction: column;
-    border: 1px solid #1E293B;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    height: calc(100vh - 200px); /* Keeps it within the screen height */
+    overflow: hidden; 
 }
 
+/* 1. The Container: Fixed height, no scrolling allowed */
 .mri-wrapper {
-    flex: 1;
-    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust this height based on your layout preference */
+    background: #000;
+    border-radius: 12px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: radial-gradient(circle, #111827 0%, #000 100%);
+    align-items: center;
+    overflow: hidden; /* This kills the scrollbars */
+    position: relative;
+    padding: 20px;
 }
 
+/* 2. The Wrapper for Image + Canvas */
+#image-container {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 3. The Image: The "Shrink to Fit" logic */
 .main-scan {
-    max-height: 90%;
-    max-width: 90%;
-    object-fit: contain;
-    border-radius: 4px;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Ensures the image fits without cropping */
+    display: block;
+}
+
+/* 4. The Canvas: Must match the shrunken image size */
+#annotation-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Important: Scale with the image */
+    height: 100%;
+    pointer-events: auto;
 }
 
 /* ROI Detection Box */
@@ -65,13 +86,13 @@
 
 /* Floating Controls */
 .viewer-controls {
-    background: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 12px;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
     display: flex;
     justify-content: center;
-    gap: 12px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    gap: 15px;
+    z-index: 10; /* Keeps buttons above the scrolling image */
 }
 
 .control-btn {

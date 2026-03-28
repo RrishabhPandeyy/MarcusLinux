@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Documentation | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+    <aside class="sidebar">
+        <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+        <nav class="side-nav">
+            <a href="dashboard.html" class="nav-item"><i data-lucide="layout-dashboard"></i> Diagnostic Console</a>
+            <a href="records.html" class="nav-item"><i data-lucide="clipboard-list"></i> Patient Records</a>
+            <a href="docs.html" class="nav-item active"><i data-lucide="file-text"></i> Documentation</a>
+        </nav>
+        
+    </aside>
+
+    <main class="workspace">
+        <header class="workspace-header">
+            <h1 style="font-size: 1.5rem; font-weight: 800;">System Documentation</h1>
+        </header>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div class="card" style="padding: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: var(--clinical-blue);"><i data-lucide="cpu" style="width:18px; vertical-align:middle;"></i> Neural Engine v3.2</h3>
+                <p style="font-size: 0.9rem; color: #64748B; line-height: 1.6;">
+                    The core architecture is based on Efficient NET on 5,600+ clinical MRI sequences. 
+                </p>
+                <div style="margin-top: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem;">
+                        <span>Detection Sensitivity</span>
+                        <strong>87.2%</strong>
+                    </div>
+                    <div style="height: 6px; background: #F1F5F9; border-radius: 3px;"><div style="width: 98%; height: 100%; background: #22C55E; border-radius: 3px;"></div></div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: var(--clinical-blue);"><i data-lucide="shield" style="width:18px; vertical-align:middle;"></i> Data Security</h3>
+                <ul style="font-size: 0.9rem; color: #64748B; line-height: 2; padding-left: 1.2rem;">
+                    <li>End-to-end AES-256 encryption.</li>
+                    <li>HIPAA & ISO 27001 compliant infrastructure.</li>
+                    <li>Zero-retention policy on raw DICOM data.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script>
+        // Use the same injector logic we just wrote
+        document.addEventListener('DOMContentLoaded', () => {
+            const userData = JSON.parse(localStorage.getItem('neuroUser'));
+            if(userData) {
+                document.getElementById('user-display-name').innerText = userData.name;
+                const initials = userData.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                document.getElementById('user-avatar').innerText = initials;
+            }
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

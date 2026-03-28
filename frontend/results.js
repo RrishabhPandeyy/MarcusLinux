@@ -165,3 +165,90 @@ function logout() {
     localStorage.removeItem('neuroScanFile');
     window.location.href = 'auth.html';
 }
+
+
+/**
+ * CLINICIAN OVERRIDE LOGIC
+ * Activates manual drawing mode on the MRI scan
+ */
+let reviewActive = false; // Track if we are currently reviewing
+
+function enableReviewMode() {
+    const canvas = document.getElementById('annotation-canvas');
+    const img = document.getElementById('main-scan');
+    const aiBox = document.getElementById('tumor-roi');
+    const ctx = canvas.getContext('2d');
+    const btn = document.getElementById('btn-review');
+
+    if (!reviewActive) {
+        // --- STATE 1: STARTING THE REVIEW ---
+        reviewActive = true;
+        
+        // 1. Show canvas & Match sizes
+        canvas.style.display = 'block';
+        canvas.style.pointerEvents = 'auto'; // Enable drawing
+        canvas.width = img.clientWidth;
+        canvas.height = img.clientHeight;
+
+        // 2. Hide AI's original finding for clear review
+        if (aiBox) aiBox.style.display = 'none';
+
+        // 3. Update Button UI
+        btn.innerHTML = '<i data-lucide="check-circle" style="width:14px"></i> Confirm Annotation';
+        btn.style.background = "#22C55E"; // Success Green
+        btn.style.color = "white";
+        if (window.lucide) lucide.createIcons();
+
+        // 4. Set up Drawing (Existing logic)
+        let isDrawing = false;
+        let startX, startY;
+
+        canvas.onmousedown = (e) => {
+            isDrawing = true;
+            startX = e.offsetX;
+            startY = e.offsetY;
+        };
+
+        canvas.onmousemove = (e) => {
+            if (!isDrawing) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+            ctx.strokeStyle = '#F59E0B'; 
+            ctx.lineWidth = 3;
+            ctx.setLineDash([5, 3]);
+            ctx.strokeRect(startX, startY, e.offsetX - startX, e.offsetY - startY);
+        };
+
+        canvas.onmouseup = () => { isDrawing = false; };
+
+    } else {
+        // --- STATE 2: CONFIRMING/LOCKING THE REPORT ---
+        const note = prompt("Review complete. Enter your clinical sign-off note:");
+        
+        if (note) {
+            // 1. Lock the drawing (Make it unclickable)
+            canvas.style.pointerEvents = 'none';
+            
+            // 2. Update Sidebar (Targeting the 'Class' label)
+            const classVal = document.querySelector('.tissue-classification dd:last-child');
+            if (classVal) {
+                classVal.innerHTML = `<span style="color:#F59E0B; font-weight:800;">[VERIFIED] ${note}</span>`;
+            }
+
+            // 3. Update Button to "Verified" State
+            btn.innerHTML = '<i data-lucide="shield-check" style="width:14px"></i> Report Verified';
+            btn.style.background = "#059669"; // Deep Medical Green
+            btn.disabled = true; // Prevents further changes
+
+            // 4. Visual Stamp on Header
+            const reportHeader = document.querySelector('.workspace-header div h1');
+            if(reportHeader) {
+                reportHeader.innerHTML += ` <span style="font-size: 0.7rem; background: #F59E0B; color: white; padding: 2px 8px; border-radius: 4px; vertical-align: middle; margin-left:10px;">CLINICIAN SIGN-OFF</span>`;
+            }
+
+            alert("Clinical Verification Complete. Report has been locked and synced to the internal database.");
+            if (window.lucide) lucide.createIcons();
+            
+            reviewActive = false; // Reset state
+        }
+    }
+}
