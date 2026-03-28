@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Access | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="auth-body">
+
+    <div class="auth-card" id="auth-card">
+        <div class="auth-header">
+            <div class="brand" style="margin-bottom: 1.5rem;">NeuroScan<span style="color:var(--navy)">AI</span></div>
+            <h2 id="auth-title">Clinician Login</h2>
+            <p id="auth-subtitle">Authorized Personnel Access Only</p>
+        </div>
+
+        <div id="auth-error" class="error-banner">
+            <i data-lucide="alert-circle" style="width:16px"></i>
+            <span id="error-text">Invalid Credentials</span>
+        </div>
+
+        <form id="login-form">
+            <div class="form-group">
+                <label>Institutional Email</label>
+                <input type="email" id="login-email" class="auth-input" placeholder="doctor@hospital.org" required>
+            </div>
+            <div class="form-group">
+                <label>Security Key</label>
+                <input type="password" id="login-pass" class="auth-input" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-cta auth-submit">Initialize Session</button>
+            <div class="auth-footer">
+                New Institution? <a href="#" onclick="toggleAuth('signup')">Request Registration</a>
+            </div>
+        </form>
+
+        <form id="signup-form" style="display: none;">
+            <div class="form-group">
+                <label>Full Professional Name</label>
+                <input type="text" id="reg-name" class="auth-input" placeholder="Dr. Your Name here" required>
+            </div>
+            <div class="form-group">
+                <label>Department Email</label>
+                <input type="email" id="reg-email" class="auth-input" placeholder="doctor@hospital.org" required>
+            </div>
+            <div class="form-group">
+                <label>Set Security Key</label>
+                <input type="password" id="reg-pass" class="auth-input" placeholder="Min. 8 characters" required>
+            </div>
+            <button type="submit" class="btn-cta auth-submit">Generate Credentials</button>
+            <div class="auth-footer">
+                Already registered? <a href="#" onclick="toggleAuth('login')">Sign In</a>
+            </div>
+        </form>
+
+        <div class="security-footer">
+            <i data-lucide="shield-check" style="width:14px; color:var(--clinical-blue)"></i>
+            <span>HIPAA Compliant Session</span>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

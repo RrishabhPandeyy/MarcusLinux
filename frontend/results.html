@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Report | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="results.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+    <aside class="sidebar">
+        <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+        <nav class="side-nav">
+            <a href="dashboard.html" class="nav-item"><i data-lucide="layout-dashboard"></i> Diagnostic Console</a>
+            <a href="records.html" class="nav-item"><i data-lucide="clipboard-list"></i> Patient Records</a>
+            <a href="docs.html" class="nav-item"><i data-lucide="book-open"></i> Documentation</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button onclick="logout()" class="logout-btn"><i data-lucide="log-out"></i> Terminate Session</button>
+        </div>
+    </aside>
+
+    <main class="workspace">
+        <header class="workspace-header">
+            <div>
+                <h1 style="font-size: 1.25rem; font-weight: 800;">Diagnostic Report <span class="mono" style="color: #94A3B8; font-weight: 400; font-size: 0.9rem; margin-left: 10px;">#NS-99201</span></h1>
+                <p id="report-date" style="font-size: 0.75rem; color: #64748B; margin-top: 4px;"></p>
+            </div>
+            <button class="btn-cta" onclick="window.print()" style="padding: 8px 16px; font-size: 0.85rem; background: #334155 !important;">
+                <i data-lucide="printer" style="width:14px"></i> Export Report
+            </button>
+        </header>
+
+        <div class="results-container">
+            <div class="analysis-viewer">
+                <div class="mri-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1000" class="main-scan" alt="Brain MRI">
+                    
+                    <div id="tumor-roi" class="roi-box">
+                        <div class="roi-label" id="roiLabel"></div>
+                    </div>
+                </div>
+
+                <div class="viewer-controls">
+                    <button class="control-btn active" id="toggleBtn" onclick="toggleROI()">
+                        <i data-lucide="layers" style="width:14px"></i> Toggle AI Overlay
+                    </button>
+                    <button class="control-btn" onclick="window.location.href='dashboard.html'">
+                        <i data-lucide="refresh-cw" style="width:14px"></i> New Analysis
+                    </button>
+                </div>
+            </div>
+
+            <div class="metrics-panel">
+                <div class="card metric-card" style="border-left: 4px solid #EF4444;">
+                    <h4 class="label">Confidence Score</h4>
+                    <div class="value-large">89.4<span style="font-size: 1.2rem;">%</span></div>
+                    <div class="progress-mini"><div class="fill" style="width: 89.4%"></div></div>
+                    <p class="status-msg">High confidence findings in Left Frontal Lobe.</p>
+                </div>
+
+                <div class="card metric-card">
+                    <h4 class="label">Volumetric Data</h4>
+                    <div class="finding-row"><span>Estimated Volume</span> <strong class="mono">4.22 cm³</strong></div>
+                    <div class="finding-row"><span>Coordinates</span> <strong class="mono">X:24.2, Y:108.4</strong></div>
+                    <div class="finding-row"><span>Density Index</span> <strong>3.2 Hunsfield</strong></div>
+                </div>
+
+                <div class="card metric-card">
+                    <h4 class="label">Tissue Classification</h4>
+                    <div class="finding-row"><span>Primary Region</span> <strong>Frontal Lobe</strong></div>
+                    <div class="finding-row"><span>Hemisphere</span> <strong>Left Cerebral</strong></div>
+                    <div class="finding-row"><span>Class</span> <strong style="color: #EF4444;">Malignant</strong></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="results.js"></script>
+</body>
+</html>

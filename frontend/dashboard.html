@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Console | NeuroScanAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dashboard-body">
+
+<aside class="sidebar">
+    <div class="brand">NeuroScan<span style="color:var(--navy)">AI</span></div>
+    
+    <nav class="side-nav">
+        <a href="dashboard.html" class="nav-item active"><i data-lucide="layout-dashboard"></i> Diagnostic Console</a>
+        <a href="records.html" class="nav-item"><i data-lucide="clipboard-list"></i> Patient Records</a>
+        <a href="docs.html" class="nav-item"><i data-lucide="book-open"></i> Documentation</a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <div class="avatar">Dr.</div>
+            <div class="user-info">
+                <p id="user-display-name" style="font-weight:700; font-size:0.9rem;">Dr. Name</p>
+                <span style="font-size:0.75rem; color:#64748B;">Neuro-Radiologist</span>
+            </div>
+        </div>
+        <button onclick="logout()" class="logout-btn">
+            <i data-lucide="log-out" style="width:16px"></i> Terminate Session
+        </button>
+    </div>
+</aside>
+
+    <main class="workspace">
+        <header class="workspace-header">
+            <div class="status-indicator">
+                <span class="pulse"></span>
+                <span class="mono">NEURAL ENGINE: ACTIVE</span>
+            </div>
+            <div class="system-time mono" id="clock">00:00:00</div>
+        </header>
+
+        <div class="console-grid">
+            <div class="card viewer-card" id="drop-zone">
+                <div id="upload-prompt" class="upload-content">
+                    <i data-lucide="upload-cloud" class="upload-icon"></i>
+                    <h3>Initialize Image Sequence</h3>
+                    <p>Drag and drop DICOM, MRI, or CT scans here</p>
+                    <input type="file" id="mri-upload" hidden accept="image/*">
+                    <button class="btn-cta" onclick="document.getElementById('mri-upload').click()">Browse Files</button>
+                </div>
+
+                <div id="analysis-overlay" class="analysis-state" style="display: none;">
+                    <div class="scanner-line"></div>
+                    <p class="mono">ANALYZING REPORTS...</p>
+                    <div class="progress-container">
+                        <div id="analysis-progress" class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="metadata-panel">
+                <div class="card">
+                    <h4>Scan Metadata</h4>
+                    <div class="meta-row"><span>Sequence:</span> <span class="mono">T2-Weighted</span></div>
+                    <div class="meta-row"><span>Slice Thickness:</span> <span class="mono">1.0mm</span></div>
+                    <div class="meta-row"><span>Status:</span> <span class="badge-waiting">Waiting</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
