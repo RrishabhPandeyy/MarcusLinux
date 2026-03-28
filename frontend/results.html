@@ -29,15 +29,25 @@
                 <h1 style="font-size: 1.25rem; font-weight: 800;">Diagnostic Report <span class="mono" style="color: #94A3B8; font-weight: 400; font-size: 0.9rem; margin-left: 10px;">#NS-99201</span></h1>
                 <p id="report-date" style="font-size: 0.75rem; color: #64748B; margin-top: 4px;"></p>
             </div>
-            <button class="btn-cta" onclick="window.print()" style="padding: 8px 16px; font-size: 0.85rem; background: #334155 !important;">
+            <div style="display: flex; gap: 10px;">
+                <button id="btn-review" class="btn-secondary" onclick="enableReviewMode()" style="padding: 8px 16px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;">
+               <i data-lucide="edit-3" style="width:14px"></i> Manual Review
+                </button>
+
+                <button class="btn-cta" onclick="window.print()" style="padding: 8px 16px; font-size: 0.85rem; background: #134155 !important; display: flex; align-items: center; gap: 8px;">
                 <i data-lucide="printer" style="width:14px"></i> Export Report
-            </button>
+                </button>
+            </div>
         </header>
 
         <div class="results-container">
             <div class="analysis-viewer">
                 <div class="mri-wrapper">
-                    <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1000" class="main-scan" alt="Brain MRI">
+                    <div id="image-container" style="position: relative; display: inline-block;">
+                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1000" class="main-scan" id="main-scan" alt="Brain MRI">
+    
+                        <canvas id="annotation-canvas" style="position: absolute; top: 0; left: 0; cursor: crosshair; display: none; pointer-events: auto;"></canvas>
+                    </div>
                     
                     <div id="tumor-roi" class="roi-box">
                         <div class="roi-label" id="roiLabel"></div>

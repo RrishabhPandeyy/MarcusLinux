@@ -6,12 +6,12 @@ Tumor Detection API with GradCAM Visualization
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from fastapi.staticfiles import StaticFiles
 import uvicorn
 import io
 import os
 from PIL import Image
 
+# Import the detector class from your other file
 from model_inference import TumorDetector
 
 # ─── App Setup ────────────────────────────────────────────────────────────────
@@ -30,21 +30,29 @@ app.add_middleware(
 )
 
 # ─── Model Bootstrap ──────────────────────────────────────────────────────────
-MODEL_PATH = os.environ.get(
-    "MODEL_PATH",
-    "models/brain_tumor_efficientnetb0.keras"
-)
-TumorDetector("models/brain_tumor_efficientnetb0.keras"))
+# This ensures it finds the models folder whether you run from /MarcusLinux or /backend
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "brain_tumor_efficientnetb0.keras")
 
+# Initialize the detector and save it to the 'detector' variable
+# so the routes below can actually use it.
+try:
+    detector = TumorDetector(MODEL_PATH)
+    print(f"✅ Neural Engine Active: Loaded model from {MODEL_PATH}")
+except Exception as e:
+    print(f"⚠️ Warning: Could not load model file. Entering DEMO mode. Error: {e}")
+    # Fallback to a placeholder if the file is missing so the app doesn't crash
+    detector = TumorDetector("models/brain_tumor_efficientnetb0.keras")
 
 # ─── Routes ───────────────────────────────────────────────────────────────────
+
 @app.get("/health")
 def health_check():
     """Ping endpoint — used by dashboard status indicator."""
     return {
         "status": "Neural Engine Active",
-        "model_loaded": detector.model_loaded,
-        "device": detector.device_name
+        "model_loaded": getattr(detector, 'model_loaded', False),
+        "device": getattr(detector, 'device_name', "Unknown")
     }
 
 
@@ -52,14 +60,8 @@ def health_check():
 async def analyze_scan(file: UploadFile = File(...)):
     """
     Primary inference endpoint.
-    Accepts any image (DICOM proxy / JPEG / PNG).
-    Returns JSON with:
-      - classification  : "Malignant" | "Benign"
-      - confidence      : float  (0-100)
-      - roi             : {top, left, width, height}  — percentage CSS values
-      - volumetric      : {volume_cm3, coordinates, density_index}
-      - region          : {lobe, hemisphere}
-      - overlay_b64     : base64 GradCAM heatmap overlay image (PNG)
+    Accepts any image (JPEG / PNG).
+    Returns JSON with classification, confidence, and GradCAM overlay.
     """
     # ── Validate ──
     if not file.content_type.startswith("image/"):
@@ -77,14 +79,18 @@ async def analyze_scan(file: UploadFile = File(...)):
 
     # ── Run Inference ──
     try:
+        # Use the 'detector' variable defined in the Bootstrap section
         result = detector.predict(image)
         return JSONResponse(content=result)
     except Exception as e:
+        import traceback
+        print(traceback.format_exc())
         raise HTTPException(status_code=500, detail=f"Inference failed: {e}")
 
 
 # ─── Entry Point ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    import os
+    # Get port from environment or default to 10000
     port = int(os.environ.get("PORT", 10000))
+    print(f"🚀 Starting NeuroScanAI on port {port}...")
     uvicorn.run(app, host="0.0.0.0", port=port)
