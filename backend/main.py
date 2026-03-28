@@ -30,8 +30,11 @@ app.add_middleware(
 )
 
 # ─── Model Bootstrap ──────────────────────────────────────────────────────────
-MODEL_PATH = os.environ.get("MODEL_PATH", "model.pth")
-detector = TumorDetector(MODEL_PATH)
+MODEL_PATH = os.environ.get(
+    "MODEL_PATH",
+    "models/brain_tumor_efficientnetb0.keras"
+)
+TumorDetector("models/brain_tumor_efficientnetb0.keras"))
 
 
 # ─── Routes ───────────────────────────────────────────────────────────────────
@@ -82,6 +85,6 @@ async def analyze_scan(file: UploadFile = File(...)):
 
 # ─── Entry Point ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    git import os
+    import os
     port = int(os.environ.get("PORT", 10000))
     uvicorn.run(app, host="0.0.0.0", port=port)
