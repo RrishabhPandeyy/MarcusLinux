@@ -1,0 +1,11 @@
+# NeuroScanAI Backend — pip install -r requirements.txt
+
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+
+# ML Stack (must match what you trained with)
+tensorflow==2.15.0
+opencv-python-headless>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
