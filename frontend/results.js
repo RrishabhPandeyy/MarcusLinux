@@ -1,34 +1,12 @@
-<<<<<<< HEAD
-/**
- * NeuroScanAI | Diagnostic Report Logic
- */
-
-// 1. Initial Checks
-checkAuth();
-lucide.createIcons();
-
-// 2. Report Timestamp
-=======
 checkAuth();
 lucide.createIcons();
 
 // ── Report Timestamp ──────────────────────────────────────────────────────────
->>>>>>> origin/main
 const reportDateEl = document.getElementById('report-date');
 if (reportDateEl) {
     const now = new Date();
     reportDateEl.innerText = now.toLocaleDateString('en-US', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-<<<<<<< HEAD
-    }) + " | 14:22:08 UTC";
-}
-
-// 3. Toggle ROI Overlay
-function toggleROI() {
-    const roi = document.getElementById('tumor-roi');
-    const btn = document.getElementById('toggleBtn');
-    
-=======
     }) + ` | ${now.toLocaleTimeString('en-US', { hour12: false })} UTC`;
 }
 
@@ -171,7 +149,6 @@ function toggleROI() {
     const btn = document.getElementById('toggleBtn');
     if (!roi) return;
 
->>>>>>> origin/main
     if (roi.style.display === 'none') {
         roi.style.display = 'block';
         btn.classList.add('active');
@@ -181,13 +158,6 @@ function toggleROI() {
     }
 }
 
-<<<<<<< HEAD
-// 4. Session Termination
-function logout() {
-    localStorage.removeItem('neuroAuth');
-    window.location.href = 'auth.html';
-}
-=======
 // ── Session Termination ───────────────────────────────────────────────────────
 function logout() {
     localStorage.removeItem('neuroAuth');
@@ -195,4 +165,3 @@ function logout() {
     localStorage.removeItem('neuroScanFile');
     window.location.href = 'auth.html';
 }
->>>>>>> origin/main
