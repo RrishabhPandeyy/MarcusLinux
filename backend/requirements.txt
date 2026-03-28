@@ -5,8 +5,7 @@ uvicorn[standard]==0.30.6
 python-multipart==0.0.9
 
 # ML Stack (must match what you trained with)
-tensorflow==2.16.0
-     # or tensorflow-cpu if no GPU
+tensorflow==2.13.0     # or tensorflow-cpu if no GPU
 opencv-python-headless>=4.8.0
 numpy>=1.24.0
 Pillow>=10.0.0
